@@ -1,0 +1,810 @@
+html, body{
+    height:100%;
+    margin:0;
+    background-color: black;
+    overflow:hidden;
+}
+
+/* This is used to make topNav and footer constant height, but scaled main body easily*/
+#bodyContainer{
+    display: flex;
+    flex-flow: column;
+    height:100%;
+}
+
+/* All code related to design of top navbar begins here*/
+#topNav{
+    background-color: black;
+    flex: 0 1 1.5em;
+}
+
+.logoContainer{
+    width: 2.5em;
+    height: 100%;
+    background-color: #4a130e;
+    float: left;
+    align-items: center;
+}
+
+.team_logo{
+    margin-left: 1.1em;
+    float:left;
+    height:1.4em;
+}
+
+.trapezoidDivider1{
+    margin-left: 0%;
+    float:left;
+    width: .5%;
+    border-left: 0px solid transparent;
+    border-right: 1em solid transparent;
+    border-top: 1.5em solid #4a130e;
+}
+
+.trapezoidDivider2{
+    margin-left: -1.1em;
+    float:left;
+    width: .5%;
+    border-bottom: 1.5em solid #303030;
+    border-left: 1em solid transparent;
+    border-right: 0em solid transparent;
+}
+
+.teamName{
+    background-color: #303030;
+    width: 7em;
+    float: left;
+    margin-top:0;
+    height:1.5em;
+    text-align: center;
+}
+
+.teamName p{
+    margin-top:.7em;
+    color:white;
+    font-size: 60%;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.trapezoidDivider3{
+    float:left;
+    width: .5%;
+    border-left: 0px solid transparent;
+    border-right: 1em solid transparent;
+    border-top: 1.5em solid #303030;
+}
+
+.trapezoidDivider4{
+    margin-right: -.4em;
+    float:right;
+    width: .5%;
+    border-bottom: 1.5em solid #303030;
+    border-left: 1em solid transparent;
+    border-right: 0em solid transparent;
+}
+
+.portSelectionDiv{
+    background-color: #303030;
+    width: 7em;
+    float: right;
+    margin-top:0;
+    height:1.5em;
+    position: relative;
+}
+
+/* Style The Dropdown Button */
+.dropbtn {
+    position: absolute;
+    background-color: #303030;
+    padding: 0em;
+    margin: 0px;
+    height: 1.5em;
+    width: 6em;
+    cursor: pointer;
+    text-align: center;
+}
+
+.dropbtn p{
+    margin-top:.5em;
+    color:white;
+    font-size: .7em;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.portSelectionDiv-content {
+    display: none;
+    position: relative;
+    background-color: #303030;
+    margin-left:-1em;
+    width: 8em;
+    z-index: 1;
+}
+  
+/* Links inside the dropdown */
+.portSelectionDiv-content div {
+    height: 1.5em;
+}
+
+.portSelectionDiv-content p{
+    margin-top:1.5em;
+    font-size: .7em;
+    font-family: 'Ubuntu', sans-serif;
+    cursor: pointer;
+    color: white;
+}
+  
+/* Show the dropdown menu on hover */
+.portSelectionDiv:hover .portSelectionDiv-content {
+    display: block;
+    margin-top: 1.5em;
+}
+
+/* Show the dropdown menu on hover */
+.portSelectionDiv-content div:hover{
+    background-color:black;
+}
+
+.dateTopNav{
+    float: right;
+    width: 8em;
+    height: 1.5em;
+    background-color: #303030;
+}
+
+.dateTopNav p{
+    margin-top: .3em;
+    color:white;
+    font-size: 80%;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.timeTopNav{
+    background-color: #303030;
+    width:5em;
+    float:right;
+    height:1.5em;
+}
+
+.timeTopNav p{
+    margin-top: .3em;
+    margin-left: 1em;
+    color:white;
+    font-size: 80%;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.rightSideNavLabel {
+    background-color: #303030;
+    float:right;
+    cursor: pointer;
+    height:1.5em;
+    width: 2.5em;
+}
+
+.plotLogo{
+    float:right;
+    margin-right:1em;
+    height: 1.5em;
+}
+
+.plotLogo img{
+    margin-top:.2em;
+    height: 1.1em;
+}
+
+.consoleWindowLabel{
+    background-color: #303030;
+    float:right;
+    cursor: pointer;
+    height:1.5em;
+    width: 2em;
+}
+
+.consoleLogo{
+    height: 100%;
+    margin-top:.2em;
+}
+
+.consoleLogo img{
+    margin-top:.1em;
+    height: .95em;
+}
+
+/* All design related to bar below topNav and side navigation is here*/
+#hiddenOptions{
+    background-color: black;
+    flex: 0 1 1.5em;
+}
+
+
+
+.leftSideNavLabel {
+    cursor: pointer;
+    margin-left: 1.5em;
+    width: 3em;
+    height:1em;
+    float: left;
+}
+
+.leftSideNavLabel p{
+    font-family: 'Ubuntu', sans-serif;
+    margin-top: .4em;
+    font-size: .7em;
+    color:white;
+}
+
+/* The left side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 3em; /* Stay at the top */
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: scroll; /* Disable horizontal scroll */
+    padding-top: 1em; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 0em 0em 1em 2em;
+    text-decoration: none;
+    font-size: .8em;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* The right side navigation menu */
+.sidenav2 {
+    height: 100%; /* 100% Full-height */
+    width: 0em; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 3em; /* Stay at the top */
+    right: 0;
+    background-color: #111; /* Black*/
+    overflow-x: scroll; /* Disable horizontal scroll */
+    padding-top: 1em; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+.plotArea{
+    width:400px;
+    height:400px;
+}
+
+/* The navigation menu links */
+.sidenav2 a {
+    padding: 0em 0em 1em 2em;
+    text-decoration: none;
+    font-size: .8em;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav2 a:hover {
+    color: #f1f1f1;
+}
+
+
+/* All design related to main, middle display begins here*/
+#mainDisplay{
+    overflow: hidden;
+    background-color: black;
+    background-size: 2em 2em;
+    background-image:
+        linear-gradient(to right, #363636 1px, transparent 1px),
+        linear-gradient(to bottom, #363636 1px, transparent 1px);
+    flex: 1 1 auto;
+}
+
+::-webkit-scrollbar{
+    height: 4px;              /* height of horizontal scrollbar ← You're missing this */
+    width: 4px;               /* width of vertical scrollbar */
+    border: 1px solid #d5d5d5;
+}
+
+.diagramContainer{
+    cursor: move;
+    width: 400%;
+    height: 150%;
+}
+
+.ventLogo2{
+    margin-top:16.8em;
+    margin-left: 3.85em;
+    width:4em;
+    height:4em;
+    position:absolute;
+    z-index:0;
+    rotate:-90deg;
+}
+
+.line1_2{
+    width:3em;
+    height:3em;
+    border-top: .2em solid white;
+    border-radius: .7em;
+    position:absolute;
+    z-index:1;
+}
+
+.line2_2{
+    margin-top:.7em;
+    margin-left:.5em;
+    width:2em;
+    height:2em;
+    border-top: .2em solid white;
+    border-radius: .7em;
+    position:absolute;
+    z-index:1;
+}
+
+.line3_2{
+    width:1em;
+    height:1em;
+    margin-top: 1.4em;
+    margin-left: 1.0em;
+    border-top: .2em solid white;
+    border-radius: .3em;
+    position:absolute;
+}
+
+.pipeLeft2{
+    margin-left:6em;
+    margin-top: 19.1em;
+    width:7em;
+    height: 0em;
+    border-bottom: .2em solid white;
+    position: absolute;
+}
+
+
+.runTankVent_SOL3{
+    cursor: pointer;
+    margin-left: 12.6em;
+    margin-top: 18em;
+    width: 2.4em;
+    height: 4em;
+    position: absolute;
+}
+
+.automationIndicator5{
+    width: 1.8em;
+    height: 1.8em;
+    border: .3em solid gray;
+    border-radius: 10%;
+    position: absolute;
+    z-index:0;
+}
+
+.responseIndicator5{
+    width: 2em;
+    height: 2em;
+    background-color: black;
+    border: .2em solid white;
+    border-radius: 35%;
+    position:absolute;
+    z-index:1;
+}
+
+.valvePosInput5{
+    transform: rotate(45deg);
+    width: 2.4em;
+    height: 0em;
+    margin-top:1.1em;
+    border-bottom: .2em solid white;
+    position:absolute;
+    z-index:2;
+
+}
+
+.valveInput5Label{
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    margin-top:3em;
+    size: 1em;
+    color:white;
+}
+
+.runTank_OT2 {
+    margin-top: 8.4em;
+    margin-left: 32.7em;
+    width: 3em;
+    height: 101px;
+    position: relative;
+    background: black;
+    border-radius: 7%;
+    overflow: hidden;
+    border: 2px solid white;
+    position: absolute;
+}
+
+.pipeUp3{
+    margin-left: 34.21em;
+    margin-top: 14.9em;
+    width: 0em;
+    height: 7em;
+    border-right: .2em solid white;
+    position: absolute;
+}
+
+.pipeUp4{
+    margin-left: 34.21em;
+    margin-top: 22.9em;
+    width: 0m;
+    height: 4em;
+    border-right: .2em solid white;
+    position: absolute;
+}
+
+.chamber{
+    margin-top: 26.4em;
+    margin-left: 32.7em;
+    width: 3em;
+    height: 101px;
+    position: relative;
+    background: black;
+    border-radius: 7%;
+    overflow: hidden;
+    border-top: 2px solid white;
+    border-right: 2px solid white;
+    border-left: 2px solid white;
+    position: absolute;
+}
+
+
+.ignitionButtonSection{
+    
+    margin-left: 32em;
+    margin-top: 21.9em;
+    width: 7em;
+    height: 4em;
+    position: absolute;
+    z-index:0;
+}
+
+.ignitionButton{
+    cursor: pointer;
+    position: absolute;
+    width: 4.6em;
+    height: 2.0em;
+    border-radius: 1em;
+    background-color: #cf8580;
+}
+
+.knob{
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 5px;
+    background-color: #a30b00;
+    width: 23px;
+    height: 23px;
+    border-radius: 30px;
+    outline-width: 2px;
+    outline-color: black;
+    outline-style:solid;
+    text-align: center;
+    color:white;
+    font-size: 8px;
+    line-height:23px;
+    overflow:hidden;
+}
+
+.ignitionButtonLabel{
+    font-family: 'Ubuntu', sans-serif;
+    text-align: right;
+    margin-top: 0.5em;
+    size: 1em;
+    color:white;
+}
+
+.pipeLeft{
+    margin-left: 23.4em;
+    margin-top: 19.1em;
+    width: 9em;
+    height: 0em;
+    border-bottom: .2em solid white;
+    position: absolute;
+}
+
+.valveInput1{
+    cursor: pointer;
+    margin-left: 32em;
+    margin-top: 18em;
+    width: 2.4em;
+    height: 4em;
+    position: absolute;
+    z-index:0;
+}
+
+.automationIndicator1{
+    width: 1.8em;
+    height: 1.8em;
+    border: .3em solid gray;
+    border-radius: 10%;
+    position: absolute;
+    z-index:0;
+}
+
+.responseIndicator{
+    width: 2em;
+    height: 2em;
+    background-color: black;
+    border: .2em solid white;
+    border-radius: 35%;
+    position:absolute;
+    z-index:1;
+    /*box-shadow: 0 0 10px 5px red;*/
+}
+
+.valvePosInput{
+    transform: rotate(45deg);
+    width: 2.4em;
+    height: 0em;
+    margin-top:1.1em;
+    border-bottom: .2em solid white;
+    position:absolute;
+    z-index:2;
+
+}
+
+.valveInput1Label{
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    margin-top: 3.5em;
+    height: .2em;
+    font-size: .8em;
+    color:white;
+}
+
+
+
+.valveInput1SwitchReadLabel{
+    text-align: center;
+    margin-top: 1.5em;
+    margin-left: -.8em;
+    width: 4em;
+    height: 2em;
+}
+
+.valveInput1SwitchReadLabel p{
+    margin-top: 0em;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: .5em;
+    color:white;
+}
+
+.pipeRight{
+    margin-left:34.3em;
+    margin-top: 19.1em;
+    width:11em;
+    height: 0em;
+    border-bottom: .2em solid white;
+    position: absolute;
+}
+
+.supplyTankFillsol1{
+    cursor: pointer;
+    margin-left: 45em;
+    margin-top: 18em;
+    width: 2.4em;
+    height: 4em;
+    position: absolute;
+    z-index:0;
+}
+
+.automationIndicator2{
+    width: 1.8em;
+    height: 1.8em;
+    border: .3em solid gray;
+    border-radius: 10%;
+    position: absolute;
+    z-index:0;
+}
+
+.responseIndicator2{
+    width: 2em;
+    height: 2em;
+    background-color: black;
+    border: .2em solid white;
+    border-radius: 35%;
+    position:absolute;
+    z-index:1;
+}
+
+.valvePosInput2{
+    transform: rotate(45deg);
+    width: 2.4em;
+    height: 0em;
+    margin-top:1.1em;
+    border-bottom: .2em solid white;
+    position:absolute;
+    z-index:2;
+
+}
+
+.valveInput2Label{
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    margin-top:3em;
+    size: .2em;
+    color:white;
+}
+
+.pipeUp1{
+    margin-left:42.22em;
+    margin-top: 13.2em;
+    width: 0em;
+    height: 6em;
+    border-right: .2em solid white;
+    position: absolute;
+}
+
+
+.supplyTankVentsol2{
+    cursor: pointer;
+    margin-left: 41.15em;
+    margin-top: 10.9em;
+    width: 5.6em;
+    height: 4em;
+    position: absolute;
+    z-index:0;
+}
+
+.ventLogo{
+    margin-top:3em;
+    margin-left: 40.85em;
+    width:4em;
+    height:4em;
+    position:absolute;
+    z-index:0;
+}
+
+.line1{
+    width:3em;
+    height:3em;
+    border-top: .2em solid white;
+    border-radius: .7em;
+    position:absolute;
+    z-index:1;
+}
+
+.line2{
+    margin-top:.7em;
+    margin-left:.5em;
+    width:2em;
+    height:2em;
+    border-top: .2em solid white;
+    border-radius: .7em;
+    position:absolute;
+    z-index:1;
+}
+
+.line3{
+    width:1em;
+    height:1em;
+    margin-top: 1.4em;
+    margin-left: 1.0em;
+    border-top: .2em solid white;
+    border-radius: .3em;
+    position:absolute;
+}
+
+.pipeUp2{
+    margin-left:42.22em;
+    margin-top: 4.9em;
+    width: 0em;
+    height: 6em;
+    border-right: .2em solid white;
+    position: absolute;
+}
+
+.automationIndicator3{
+    width: 1.8em;
+    height: 1.8em;
+    border: .3em solid gray;
+    border-radius: 10%;
+    position: absolute;
+    z-index:0;
+}
+
+.responseIndicator3{
+    width: 2em;
+    height: 2em;
+    background-color: black;
+    border: .2em solid white;
+    border-radius: 35%;
+    position:absolute;
+    z-index:1;
+}
+
+.valvePosInput3{
+    transform: rotate(45deg);
+    width: 2.4em;
+    height: 0em;
+    margin-top:1.1em;
+    border-bottom: .2em solid white;
+    position:absolute;
+    z-index:2;
+
+}
+
+.valveInput3Label{
+    font-family: 'Ubuntu', sans-serif;
+    text-align: right;
+    margin-top: .7em;
+    size: 1em;
+    color:white;
+}
+
+.pipeRight2{
+    margin-left:47.3em;
+    margin-top: 19.1em;
+    width:9em;
+    height: 0em;
+    border-bottom: .2em solid white;
+    position: absolute;
+    box-shadow: 0 0 2px 2px white;
+}
+
+.supplyTank_OT1 {
+    margin-top: 16.1em;
+    margin-left: 56em;
+    width: 3em;
+    height: 101px;
+    position: relative;
+    background: black;
+    border-radius: 7%;
+    overflow: hidden;
+    border: 2px solid white;
+    position: absolute;
+}
+
+
+#footer{
+    background-color: black;
+    flex: 0 1 1.5em;
+}
+
+#footer p{
+    margin-top:3%;
+    color: white;
+    font-size: 70%;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.last_sent{
+    margin-left: 1em;
+    float: left;
+    height: 100%;
+    width: 15%;
+    border-right: 2px solid #363636;
+}
+
+.last_received{
+    margin-left: 1em;
+    float: left;
+    height: 100%;
+    width: 15%;
+    border-right: 2px solid #363636;
+}
+
+.warning_status{
+    margin-left: 1em;
+    float:left;
+    height:100%;
+    width: 20%;
+    border-right: 2px solid #363636;
+}
