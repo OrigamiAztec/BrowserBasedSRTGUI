@@ -108,3 +108,86 @@ function switchButton(){
     }
 
 }
+
+//update time here
+function updateNavTime() {
+    var now = new Date(), // current date
+        months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August','September', 'October', 'November', 'December']; 
+        time = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds()
+
+        // a cleaner way than string concatenation
+        date = [now.getDate(), 
+                months[now.getMonth()],
+                now.getFullYear()].join(' ');
+
+    //var newTIme = [date, time].join(' / ');
+    document.querySelector(".updatedTime").textContent = time;
+    // call this function again in 1000ms
+    setTimeout(updateNavTime, 1000);
+}
+updateNavTime(); // initial call
+
+//update time and date here
+function updateNavDate() {
+    var now = new Date(), // current date
+        months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August','September', 'October', 'November', 'December']; 
+
+        // a cleaner way than string concatenation
+        date = [now.getDate(), 
+                months[now.getMonth()],
+                now.getFullYear()].join(' ');
+
+
+    document.querySelector(".updatedDate").textContent = date;
+    // call this function again in 1000ms
+    setTimeout(updateNavDate, 1000 );
+}
+updateNavDate(); // initial call
+
+//functions called to drag whole diagram 
+let currentDroppable = null;
+let ball = document.querySelector(".diagramContainer")
+
+document.querySelector(".diagramContainer").onmousedown = function(event) {
+    // checks if left click button was pressed
+    if (event.button == 0){
+        let shiftX = event.clientX - ball.getBoundingClientRect().left;
+        let shiftY = event.clientY - ball.getBoundingClientRect().top;
+        
+        ball.style.position = 'absolute';
+        ball.style.zIndex = 1000;
+        document.body.append(ball);
+
+        
+        moveAt(event.pageX, event.pageY);
+
+        function moveAt(pageX, pageY) {
+            ball.style.left = pageX - shiftX + 'px';
+            ball.style.top = pageY - shiftY + 'px';
+        }
+        
+        function onMouseMove(event) {
+            moveAt(event.pageX, event.pageY);
+
+            ball.hidden = true;
+            let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
+            ball.hidden = false;
+
+            if (!elemBelow) return;
+        }
+        
+        document.addEventListener('mousemove', onMouseMove);
+    }
+
+    document.querySelector(".diagramContainer").onmouseup = function() {
+        document.removeEventListener('mousemove', onMouseMove);
+        ball.onmouseup = null;
+    };
+    
+};
+
+
+
+ball.ondragstart = function() {
+    return false;
+};
