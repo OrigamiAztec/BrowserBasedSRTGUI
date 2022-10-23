@@ -1,24 +1,22 @@
 var clickCounter = 0;
 var ignitionInput = 0;
+var closeRightNavCounter = 0;
 
-var valveInput5 = 0;
-var valveInput4 = 0;
 var valveInput3 = 0;
 var valveInput2 = 0;
 var ignitionInput = 0;
 
-function myFunction() {
-    console.log("clicked button!");
-    if (clickCounter == 0){
-        clickCounter ++;
-        document.getElementById("demo").innerHTML = "Hello World";
+//top navigation bar functions:
+function openCloseRightNavBar(){
+    //console.log(closeRightNav);
+    if (closeRightNavCounter == 0){
+        closeRightNavCounter ++;
+        document.getElementById("rightSideNav").style.width = "20em";
 
-    }
-    else{
-        clickCounter = 0;
-        document.getElementById("demo").innerHTML = "GOODBYE World";
-    }
-
+    }else{
+        closeRightNavCounter = 0;
+        document.getElementById("rightSideNav").style.width = "0";
+    }    
 }
 
 function switchButton(){
@@ -127,24 +125,9 @@ function updateNavTime() {
 }
 updateNavTime(); // initial call
 
-//update time and date here
-function updateNavDate() {
-    var now = new Date(), // current date
-        months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August','September', 'October', 'November', 'December']; 
 
-        // a cleaner way than string concatenation
-        date = [now.getDate(), 
-                months[now.getMonth()],
-                now.getFullYear()].join(' ');
-
-
-    document.querySelector(".updatedDate").textContent = date;
-    // call this function again in 1000ms
-    setTimeout(updateNavDate, 1000 );
-}
-updateNavDate(); // initial call
-
-//functions called to drag whole diagram 
+//functions called to drag whole diagram. Doesn't work in microsoft edge.
+/*
 let currentDroppable = null;
 let ball = document.querySelector(".diagramContainer")
 
@@ -191,3 +174,5 @@ document.querySelector(".diagramContainer").onmousedown = function(event) {
 ball.ondragstart = function() {
     return false;
 };
+
+*/

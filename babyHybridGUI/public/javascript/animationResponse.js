@@ -55,7 +55,7 @@ function updateNavTime() {
 }
 updateNavTime(); // initial call
 
-//update time here
+//update date here
 function updateNavDate() {
     var now = new Date(), // current date
         months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August','September', 'October', 'November', 'December']; 

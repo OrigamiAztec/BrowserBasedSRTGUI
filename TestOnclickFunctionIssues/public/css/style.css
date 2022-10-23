@@ -211,57 +211,6 @@ html, body{
     height: .95em;
 }
 
-/* All design related to bar below topNav and side navigation is here*/
-#hiddenOptions{
-    background-color: black;
-    flex: 0 1 1.5em;
-}
-
-
-
-.leftSideNavLabel {
-    cursor: pointer;
-    margin-left: 1.5em;
-    width: 3em;
-    height:1em;
-    float: left;
-}
-
-.leftSideNavLabel p{
-    font-family: 'Ubuntu', sans-serif;
-    margin-top: .4em;
-    font-size: .7em;
-    color:white;
-}
-
-/* The left side navigation menu */
-.sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 3em; /* Stay at the top */
-    left: 0;
-    background-color: #111; /* Black*/
-    overflow-x: scroll; /* Disable horizontal scroll */
-    padding-top: 1em; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-}
-
-/* The navigation menu links */
-.sidenav a {
-    padding: 0em 0em 1em 2em;
-    text-decoration: none;
-    font-size: .8em;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-    color: #f1f1f1;
-}
 
 /* The right side navigation menu */
 .sidenav2 {
@@ -269,7 +218,7 @@ html, body{
     width: 0em; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
-    top: 3em; /* Stay at the top */
+    top: 1.5em; /* Stay at the top */
     right: 0;
     background-color: #111; /* Black*/
     overflow-x: scroll; /* Disable horizontal scroll */
