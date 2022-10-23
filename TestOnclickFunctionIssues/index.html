@@ -8,27 +8,42 @@
     <!--Link source to css styling page. Remove "public" when setting file path with socket io.-->
     <link rel="stylesheet" type="text/css"  href="public/css/style.css">
 
+     
+    <!-- links to nice google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    
 </head>
 
 <body>
-  
+  <div id = "bodyContainer">
 
-  <button onclick="myFunction()">Click me</button>
+    <div id = "mainDisplay">
 
-  <p id="demo"></p>
+        <div class="diagramContainer">
 
-  <div class =  "ignitionButtonSection">
+            <div class =  "ignitionButtonSection">
 
-    <div class="ignitionButton" onclick = "switchButton()">
+                <div class="ignitionButton" onclick = "switchButton()">
 
-        <div class="knob">OFF</div>
-        
-      </div>
+                    <div class="knob">OFF</div>
+                    
+                  </div>
 
-    <p class = "ignitionButtonLabel">IGN</p>
-    
-  </div>
+                <p class = "ignitionButtonLabel">IGN</p>
+            </div>
+            
+            <button onclick="myFunction()">Click me</button>
 
+            <p id="demo"></p>
+
+        </div>
+    </div>
+
+
+
+</div>
 
   <script src="public/javascript/animationResponse.js"></script>
 
