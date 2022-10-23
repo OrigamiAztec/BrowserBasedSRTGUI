@@ -1,0 +1,59 @@
+html, body{
+    height:100%;
+    margin:0;
+    background-color: white;
+    overflow:hidden;
+}
+
+/* This is used to make topNav and footer constant height, but scaled main body easily*/
+#bodyContainer{
+    display: flex;
+    flex-flow: column;
+    height:100%;
+}
+
+
+.ignitionButtonSection{
+    
+    margin-left: 32em;
+    margin-top: 21.9em;
+    width: 7em;
+    height: 4em;
+    position: absolute;
+    z-index:0;
+}
+
+.ignitionButton{
+    cursor: pointer;
+    position: absolute;
+    width: 4.6em;
+    height: 2.0em;
+    border-radius: 1em;
+    background-color: #cf8580;
+}
+
+.knob{
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 5px;
+    background-color: #a30b00;
+    width: 23px;
+    height: 23px;
+    border-radius: 30px;
+    outline-width: 2px;
+    outline-color: black;
+    outline-style:solid;
+    text-align: center;
+    color:white;
+    font-size: 8px;
+    line-height:23px;
+    overflow:hidden;
+}
+
+.ignitionButtonLabel{
+    font-family: 'Ubuntu', sans-serif;
+    text-align: right;
+    margin-top: 0.5em;
+    size: 1em;
+    color:white;
+}
