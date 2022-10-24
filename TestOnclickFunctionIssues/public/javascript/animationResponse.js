@@ -125,6 +125,22 @@ function updateNavTime() {
 }
 updateNavTime(); // initial call
 
+//update date here
+function updateNavDate() {
+    var now = new Date(), // current date
+        months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August','September', 'October', 'November', 'December']; 
+
+        // a cleaner way than string concatenation
+        date = [now.getDate(), 
+                months[now.getMonth()],
+                now.getFullYear()].join(' ');
+
+
+    document.querySelector(".updatedDate").textContent = date;
+    // call this function again in 1000ms
+    setTimeout(updateNavDate, 1000 );
+}
+updateNavDate(); // initial call
 
 //functions called to drag whole diagram. Doesn't work in microsoft edge.
 /*
