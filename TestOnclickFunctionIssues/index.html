@@ -130,6 +130,27 @@
         </div>
     </div>
 
+    <div id = "footer">
+        <div class = "last_sent">
+            <p>Last Sent  </p>
+        </div>
+
+        <div class = "last_received">
+            <p>Last Received   </p>
+        </div>
+
+        <div class = "warning_status">
+            <p>Warning Status </p>
+        </div>
+
+        <div class = "data_recording_status">
+            <div class = "startRecordingDataLogo" onclick = "updateDataRecordingState()"><img src="public/images/playButtonLogo.PNG" id="imgClickAndChange">></div> 
+            <div class = "saveDataLogo" onclick = "download_csv_file()"><img src="public/images/saveDataLogo.png"></div> 
+            <p id="recordingTextStatus">Not Recording</p>
+        </div>
+
+    </div>
+
 
 
 </div>

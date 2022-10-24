@@ -6,6 +6,8 @@ var valveInput3 = 0;
 var valveInput2 = 0;
 var ignitionInput = 0;
 
+varDataRecordingStatus = 0;
+
 //top navigation bar functions:
 function openCloseRightNavBar(){
     //console.log(closeRightNav);
@@ -128,6 +130,7 @@ function updateNavDate() {
 }
 updateNavDate(); // initial call
 
+/*
 //functions called to drag whole diagram. Doesn't work in microsoft edge.
 
 let currentDroppable = null;
@@ -172,10 +175,10 @@ document.querySelector(".diagramContainer").onmousedown = function(event) {
 };
 
 
-
 ball.ondragstart = function() {
     return false;
 };
+*/
 
 // outputting simulated data for plotting
 function simPressureData(){
@@ -261,3 +264,57 @@ setInterval(function(){
     }
 
 }, 100); 
+
+
+//section below will set response to starting to record data when clicked
+function updateDataRecordingState(){
+    if (varDataRecordingStatus == 0){
+        varDataRecordingStatus ++;
+        console.log("recording data");
+        document.getElementById('imgClickAndChange').src = 'public/images/playButtonLogoRed.PNG';
+        document.getElementById('recordingTextStatus').textContent = "Recording";
+    }
+    else{
+        varDataRecordingStatus = 0;
+        console.log("not recording data");
+        document.getElementById('imgClickAndChange').src = 'public/images/playButtonLogo.PNG';
+        document.getElementById('recordingTextStatus').textContent = "Not Recording";
+    }
+}
+
+//create CSV file data in an array  
+var csvSimulatedFileData = [  
+    ['10/24/2022', '1:49:13', "SupplyFillClose"],  
+    ['10/24/2022', '1:49:13', "SupplyVentClose"],  
+    ['10/24/2022', '1:49:14', "IgnitionOff"],  
+    ['10/24/2022', '1:49:14', "SupplyFillOpen"],  
+    ['10/24/2022', '1:49:15', "IgnitionOn"]  
+ ];  
+
+//save CSV file from commands saved during save session
+function download_csv_file(){
+    //define the heading for each row of the data  
+    var csv = 'Date, Time, Command\n';  
+       
+    //merge the data with CSV  
+    csvSimulatedFileData.forEach(function(row) {  
+            csv += row.join(',');  
+            csv += "\n";  
+    });  
+   
+    var csvFile;
+    var downloadLink;
+   
+    //define the file type to text/csv
+    csvFile = new Blob([csv], {type: 'text/csv'});
+    downloadLink = document.createElement("a");
+    downloadLink.download = "testData.csv";
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+    downloadLink.style.display = "none";
+
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    
+}
+
+
