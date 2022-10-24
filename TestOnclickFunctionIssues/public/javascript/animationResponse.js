@@ -19,22 +19,24 @@ function openCloseRightNavBar(){
     }    
 }
 
-function switchButton(){
-    console.log("clicked button!");
+function switchIgnitionButton(){
     if (ignitionInput == 0){
         ignitionInput ++;
+        console.log("ignition on");
         document.querySelector('.knob').style.transform = 'translate(40px)';
         document.querySelector('.knob').style["background-color"] = '#6ade6c';
         document.querySelector('.knob').textContent = "ON";  
         document.querySelector('.ignitionButton').style["background-color"] = '#008014';
+        document.querySelector('.pipeUp4').style["boxShadow"] = " 0 2px 2px 2px white";
     }
     else{
         ignitionInput = 0;
+        console.log("ignition off");
         document.querySelector('.knob').style.transform = 'translate(0px)';
         document.querySelector('.knob').style["background-color"] = '#a30b00';
         document.querySelector('.knob').textContent = "OFF";  
         document.querySelector('.ignitionButton').style["background-color"] = '#cf8580';
-
+        document.querySelector('.pipeUp4').style["boxShadow"] = " 0 0 0 0 white";
     }
 
 }
@@ -42,10 +44,12 @@ function switchButton(){
 function rotateValveLine3(){
     if (valveInput3 == 0){
         valveInput3 ++;
+        console.log("supply vent on");
         document.querySelector('.valvePosInput3').style.transform = 'rotate(90deg)';
         document.querySelector('.pipeUp2').style["boxShadow"] = " 0 2px 2px 2px white";
     }else{
         valveInput3 = 0;
+        console.log("supply vent off")
         document.querySelector('.valvePosInput3').style.transform = 'rotate(45deg)';
         document.querySelector('.pipeUp2').style["boxShadow"] = " 0 0 0 0 white";
     }
@@ -62,6 +66,7 @@ function rotateValveLine3(){
 function rotateValveLine2(){
     if (valveInput2 == 0){
         valveInput2 ++;
+        console.log("supply fill on");
         document.querySelector('.valvePosInput2').style.transform = 'rotate(0deg)';
         document.querySelector('.pipeRight').style["boxShadow"] = " 0 0 2px 2px white";
         document.querySelector('.pipeUp1').style["boxShadow"] = " 0 2px 2px 2px white";
@@ -70,6 +75,7 @@ function rotateValveLine2(){
     }
     else{
         valveInput2 = 0;
+        console.log("supply fill off");
         document.querySelector('.valvePosInput2').style.transform = 'rotate(45deg)';
         document.querySelector('.pipeRight').style["boxShadow"] = " 0 0 0 0 white";
         document.querySelector('.pipeUp1').style["boxShadow"] = " 0 0 0 0 white";
@@ -85,27 +91,7 @@ function rotateValveLine2(){
 
 }
 
-function switchButton(){
-    console.log("clicked button!");
-    if (ignitionInput == 0){
-        ignitionInput ++;
-        document.querySelector('.knob').style.transform = 'translate(40px)';
-        document.querySelector('.knob').style["background-color"] = '#6ade6c';
-        document.querySelector('.knob').textContent = "ON";  
-        document.querySelector('.ignitionButton').style["background-color"] = '#008014';
-        document.querySelector('.pipeUp4').style["boxShadow"] = " 0 2px 2px 2px white";
-    }
-    else{
-        ignitionInput = 0;
-        document.querySelector('.knob').style.transform = 'translate(0px)';
-        document.querySelector('.knob').style["background-color"] = '#a30b00';
-        document.querySelector('.knob').textContent = "OFF";  
-        document.querySelector('.ignitionButton').style["background-color"] = '#cf8580';
-        document.querySelector('.pipeUp4').style["boxShadow"] = " 0 0 0 0 white";
 
-    }
-
-}
 
 //update time here
 function updateNavTime() {
@@ -143,7 +129,7 @@ function updateNavDate() {
 updateNavDate(); // initial call
 
 //functions called to drag whole diagram. Doesn't work in microsoft edge.
-/*
+
 let currentDroppable = null;
 let ball = document.querySelector(".diagramContainer")
 
@@ -191,4 +177,87 @@ ball.ondragstart = function() {
     return false;
 };
 
-*/
+// outputting simulated data for plotting
+function simPressureData(){
+    var guessVal = Math.random() * (1200 - 800) + 800;
+    return guessVal;
+}
+
+var trace1 = {
+    y : [simPressureData()],
+    //y : [servoCurrentOutput],
+    type: 'line-marker'
+};
+
+var layout1 = {
+    autosize: false,
+    width: 300,
+    height: 300,
+    plot_bgcolor:"#111",
+    paper_bgcolor: "#111",
+    margin: {l: 80,
+             r: 50,
+             b: 50,
+             t: 80,
+             pad: 0
+            },
+    title: {text:'Run Tank Pressure Simulated Output',
+            font: {color: 'white',
+                   size: 14
+                   },
+            },
+
+    xaxis: {gridcolor: "#949494", 
+            zerolinecolor : "white", 
+            title: 'time (s)',
+            titlefont: {size: 10,
+                        color: 'white'
+                        },
+            tickfont: {size: 10,
+                       color: 'white'
+                       }
+            },
+    
+    yaxis: {gridcolor: "#949494", 
+            zerolinecolor : "white", 
+            title: 'pressure (psi)',
+            titlefont: {size: 10,
+                        color: 'white'
+                        },
+            tickfont: {size: 10,
+                       color: 'white'
+                       }
+            },
+    
+    };
+
+
+var data1 = [trace1];
+
+Plotly.newPlot('plotDiv1', data1, layout1);
+
+var xAxisCounter = 0;
+var xAxisChangeVal = 50;
+
+setInterval(function(){
+    Plotly.extendTraces('plotDiv1', { y : [[simPressureData()]]}, [0]);
+    //Plotly.extendTraces('plotDiv1', {y : [[servoCurrentOutput]]}, [0]);
+    xAxisCounter++;
+
+    if (xAxisCounter > xAxisChangeVal){
+        Plotly.relayout('plotDiv1', {
+            xaxis: {
+                range: [xAxisCounter - xAxisChangeVal, xAxisCounter],
+                gridcolor: "#949494", 
+                zerolinecolor : "white",
+                tickfont: {color: 'white'
+                        },
+                title: 'time (s)',
+                titlefont: {size: 10,
+                        color: 'white'
+                        }
+            }
+        })
+    }
+
+}, 100); 
