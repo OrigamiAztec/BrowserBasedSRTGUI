@@ -76,14 +76,24 @@
         <div class="diagramContainer">
 
             <div class = "softwareArmingOptionsContainer">
-                <div class = "sysArmButton">
-                    <div class = "knob-sysArm"></div>
+                <div class = "sysArmButton" onclick = "armDisarmSystem()">
+                    <div class = "knob-sysArm">
+                        <div class = "knob-sysLabel">SYS DISARMED</div>
+                    </div>
                 </div>
-                <p class = "sysArmLabel">SYS ARM</p>
-                <div class = "solArmButton"></div>
-                <p class = "solArmLabel">SOL ARM</p>
-                <div class = "ignArmButton"></div>
-                <p class = "ignArmLabel">IGN ARM</p>
+                <!--<p class = "sysArmLabel">SYS ARM</p>-->
+                <div class = "solArmButton" onclick = "armDisarmSol()">
+                    <div class = "knob-solArm">
+                        <div class = "knob-solLabel">SOL DISARMED</div>
+                    </div>
+                </div>
+                <!--<p class = "solArmLabel">SOL ARM</p>-->
+                <div class = "ignArmButton" onclick = "armDisarmIgn()">
+                    <div class = "knob-ignArm">
+                        <div class = "knob-ignLabel">IGN DISARMED</div>
+                    </div>
+                </div>
+                <!--<p class = "ignArmLabel">IGN ARM</p>-->
             </div>
 
             <div class = "LC2Container">
@@ -188,15 +198,15 @@
 
     <div id = "footer">
         <div class = "last_sent">
-            <p>Last Sent  </p>
+            <p class = "last_sent_text">Last Sent: - - -  </p>
         </div>
 
         <div class = "last_received">
-            <p>Last Received   </p>
+            <p>Last Received: - - -   </p>
         </div>
 
         <div class = "warning_status">
-            <p>Warning Status </p>
+            <p class = "warning_status_text">Warning Status: - - - </p>
         </div>
 
         <div class = "data_recording_status">

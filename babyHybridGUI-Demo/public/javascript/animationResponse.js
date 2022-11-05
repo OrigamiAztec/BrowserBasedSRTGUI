@@ -6,7 +6,11 @@ var valveInput3 = 0;
 var valveInput2 = 0;
 var ignitionInput = 0;
 
-varDataRecordingStatus = 0;
+var sysArmStatus = 0;
+var solArmStatus = 0;
+var ignArmStatus = 0;
+
+var DataRecordingStatus = 0;
 
 //top navigation bar functions:
 function openCloseRightNavBar(){
@@ -21,10 +25,89 @@ function openCloseRightNavBar(){
     }    
 }
 
+function armDisarmSystem(){
+    if (sysArmStatus == 0){
+        sysArmStatus ++;
+        console.log("arming system");
+        document.querySelector('.last_sent_text').textContent = " Last Sent: SYS ARM";
+        document.querySelector('.knob-sysArm').style.transform = 'translate(5em)';
+        document.querySelector('.knob-sysArm').style["background-color"] = '#6ade6c';
+        document.querySelector('.sysArmButton').style["background-color"] = "rgb(0, 128, 20)";
+        document.querySelector('.knob-sysLabel').textContent = "SYS ARMED";  
+        document.querySelector('.knob-sysLabel').style["color"] = "black";
+        if (DataRecordingStatus){
+            csvSimulatedFileData.push(['10/24/2022', '1:49:13', "SYS ARM"]);
+        }  
+
+    }
+    else{
+        sysArmStatus = 0;
+        console.log("disarming system");
+        document.querySelector('.last_sent_text').textContent = " Last Sent: SYS DISARM";
+        document.querySelector('.knob-sysArm').style.transform = 'translate(0px)';
+        document.querySelector('.knob-sysArm').style["background-color"] = '#a30b00';
+        document.querySelector('.knob-sysLabel').textContent = "SYS DISARMED";  
+        document.querySelector('.knob-sysLabel').style["color"] = "white";  
+        document.querySelector('.sysArmButton').style["background-color"] = "#cf8580";
+        if (DataRecordingStatus){
+            csvSimulatedFileData.push(['10/24/2022', '1:49:13', "SYS DISARM"]);
+        }
+    }
+}
+
+function armDisarmSol(){
+    if (sysArmStatus && (solArmStatus == 0)){
+        solArmStatus ++;
+        console.log("arming solenoid");
+        document.querySelector('.last_sent_text').textContent = " Last Sent: SOL ARM";
+        document.querySelector('.knob-solArm').style.transform = 'translate(5em)';
+        document.querySelector('.knob-solArm').style["background-color"] = '#6ade6c';
+        document.querySelector('.solArmButton').style["background-color"] = "rgb(0, 128, 20)";
+        document.querySelector('.knob-solLabel').textContent = "SOL ARMED";  
+        document.querySelector('.knob-solLabel').style["color"] = "black";  
+
+    }
+    else{
+        solArmStatus = 0;
+        console.log("disarming solenoid");
+        document.querySelector('.last_sent_text').textContent = " Last Sent: SOL DISARM";
+        document.querySelector('.knob-solArm').style.transform = 'translate(0px)';
+        document.querySelector('.knob-solArm').style["background-color"] = '#a30b00';
+        document.querySelector('.knob-solLabel').textContent = "SOL DISARMED";  
+        document.querySelector('.knob-solLabel').style["color"] = "white";  
+        document.querySelector('.solArmButton').style["background-color"] = "#cf8580";
+    }
+}
+
+function armDisarmIgn(){
+    if (sysArmStatus && (ignArmStatus == 0)){
+        ignArmStatus ++;
+        console.log("arming Igniter");
+        document.querySelector('.last_sent_text').textContent = " Last Sent: IGN ARM";
+        document.querySelector('.knob-ignArm').style.transform = 'translate(5em)';
+        document.querySelector('.knob-ignArm').style["background-color"] = '#6ade6c';
+        document.querySelector('.ignArmButton').style["background-color"] = "rgb(0, 128, 20)";
+        document.querySelector('.knob-ignLabel').textContent = "IGN ARMED";  
+        document.querySelector('.knob-ignLabel').style["color"] = "black";  
+
+    }
+    else{
+        ignArmStatus = 0;
+        console.log("disarming Igniter");
+        document.querySelector('.last_sent_text').textContent = " Last Sent: IGN DISARM";
+        document.querySelector('.knob-ignArm').style.transform = 'translate(0px)';
+        document.querySelector('.knob-ignArm').style["background-color"] = '#a30b00';
+        document.querySelector('.knob-ignLabel').textContent = "IGN DISARMED";  
+        document.querySelector('.knob-ignLabel').style["color"] = "white";  
+        document.querySelector('.ignArmButton').style["background-color"] = "#cf8580";
+    }
+}
+
 function switchIgnitionButton(){
-    if (ignitionInput == 0){
+    if (ignArmStatus && (ignitionInput == 0)){
         ignitionInput ++;
         console.log("ignition on");
+        document.querySelector('.last_sent_text').textContent = " Last Sent: IGN+";
         document.querySelector('.knob').style.transform = 'translate(40px)';
         document.querySelector('.knob').style["background-color"] = '#6ade6c';
         document.querySelector('.knob').textContent = "ON";  
@@ -34,6 +117,7 @@ function switchIgnitionButton(){
     else{
         ignitionInput = 0;
         console.log("ignition off");
+        document.querySelector('.last_sent_text').textContent = " Last Sent: IGN-";
         document.querySelector('.knob').style.transform = 'translate(0px)';
         document.querySelector('.knob').style["background-color"] = '#a30b00';
         document.querySelector('.knob').textContent = "OFF";  
@@ -43,15 +127,19 @@ function switchIgnitionButton(){
 
 }
 
+
+
 function rotateValveLine3(){
-    if (valveInput3 == 0){
+    if (solArmStatus && (valveInput3 == 0)){
         valveInput3 ++;
         console.log("supply vent on");
+        document.querySelector('.last_sent_text').textContent = " Last Sent: OV2+";
         document.querySelector('.valvePosInput3').style.transform = 'rotate(90deg)';
         document.querySelector('.pipeUp2').style["boxShadow"] = " 0 2px 2px 2px white";
     }else{
         valveInput3 = 0;
         console.log("supply vent off")
+        document.querySelector('.last_sent_text').textContent = " Last Sent: OV2-";
         document.querySelector('.valvePosInput3').style.transform = 'rotate(45deg)';
         document.querySelector('.pipeUp2').style["boxShadow"] = " 0 0 0 0 white";
     }
@@ -66,9 +154,10 @@ function rotateValveLine3(){
 }
 
 function rotateValveLine2(){
-    if (valveInput2 == 0){
+    if (solArmStatus && (valveInput2 == 0)){
         valveInput2 ++;
         console.log("supply fill on");
+        document.querySelector('.last_sent_text').textContent = " Last Sent: OV1+";
         document.querySelector('.valvePosInput2').style.transform = 'rotate(0deg)';
         document.querySelector('.pipeRight').style["boxShadow"] = " 0 0 2px 2px white";
         document.querySelector('.pipeUp1').style["boxShadow"] = " 0 2px 2px 2px white";
@@ -78,6 +167,7 @@ function rotateValveLine2(){
     else{
         valveInput2 = 0;
         console.log("supply fill off");
+        document.querySelector('.last_sent_text').textContent = " Last Sent: OV1-";
         document.querySelector('.valvePosInput2').style.transform = 'rotate(45deg)';
         document.querySelector('.pipeRight').style["boxShadow"] = " 0 0 0 0 white";
         document.querySelector('.pipeUp1').style["boxShadow"] = " 0 0 0 0 white";
@@ -219,14 +309,14 @@ setInterval(function(){
 
 //section below will set response to starting to record data when clicked
 function updateDataRecordingState(){
-    if (varDataRecordingStatus == 0){
-        varDataRecordingStatus ++;
+    if (DataRecordingStatus == 0){
+        DataRecordingStatus ++;
         console.log("recording data");
         document.getElementById('imgClickAndChange').src = 'public/images/playButtonLogoRed.PNG';
         document.getElementById('recordingTextStatus').textContent = "Recording";
     }
     else{
-        varDataRecordingStatus = 0;
+        DataRecordingStatus = 0;
         console.log("not recording data");
         document.getElementById('imgClickAndChange').src = 'public/images/playButtonLogo.PNG';
         document.getElementById('recordingTextStatus').textContent = "Not Recording";
@@ -235,11 +325,11 @@ function updateDataRecordingState(){
 
 //create CSV file data in an array  
 var csvSimulatedFileData = [  
-    ['10/24/2022', '1:49:13', "SupplyFillClose"],  
-    ['10/24/2022', '1:49:13', "SupplyVentClose"],  
-    ['10/24/2022', '1:49:14', "IgnitionOff"],  
-    ['10/24/2022', '1:49:14', "SupplyFillOpen"],  
-    ['10/24/2022', '1:49:15', "IgnitionOn"]  
+    //['10/24/2022', '1:49:13', "SupplyFillClose"],  
+    //['10/24/2022', '1:49:13', "SupplyVentClose"],  
+    //['10/24/2022', '1:49:14', "IgnitionOff"],  
+    //['10/24/2022', '1:49:14', "SupplyFillOpen"],  
+    //['10/24/2022', '1:49:15', "IgnitionOn"]  
  ];  
 
 //save CSV file from commands saved during save session

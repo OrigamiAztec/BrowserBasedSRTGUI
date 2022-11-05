@@ -278,59 +278,111 @@ html, body{
 }
 
 .sysArmButton{
+    cursor: pointer;
     margin-top: 0.2em;
-    margin-left: 5.8em;
-    width: 6em;
-    height: 1.5em;
+    margin-left: 0em;
+    width: 10em;
+    height: 1.8em;
     position:absolute;
-    border: .1em solid white;
     border-radius: 2em;
+    background-color: #cf8580;
+    border: .1em black solid;
+    position:absolute;
 }
 
-.sysArmLabel{
-    font-family: 'Ubuntu', sans-serif;
-    text-align: left;
-    margin-top: 0.5em;
-    size: 1em;
-    color:white;
+.knob-sysArm{
+    width: 5em;
+    height: 1.7em;
+    position: absolute;
+    background: white;
+    border-radius: 2em;
+    border: .1em black solid;
+    background-color: #a30b00;
+
+    display: flex;
+    align-items: center; /* Vertical center alignment */
+    justify-content: center; /* Horizontal center alignment */
+
 }
+
+.knob-sysLabel{
+    color:white;
+    font-size: 0.6em;
+    font-family: 'Ubuntu', sans-serif;
+    user-select: none;
+
+}
+
 
 .solArmButton{
-    margin-top: 1em;
-    margin-left: 5.8em;
-    width: 6em;
-    height: 1.5em;
+    cursor: pointer;
+    margin-top: 4em;
+    margin-left: 0em;
+    width: 10em;
+    height: 1.8em;
     position:absolute;
-    border: .1em solid white;
     border-radius: 2em;
+    background-color: #cf8580;
+    border: .1em black solid;
+    position:absolute;
 }
 
-.solArmLabel{
-    font-family: 'Ubuntu', sans-serif;
-    text-align: left;
-    margin-top: 2.2em;
-    size: 1em;
+.knob-solArm{
+    width: 5em;
+    height: 1.7em;
+    position: absolute;
+    background: white;
+    border-radius: 2em;
+    border: .1em black solid;
+    background-color: #a30b00;
+
+    display: flex;
+    align-items: center; /* Vertical center alignment */
+    justify-content: center; /* Horizontal center alignment */
+
+}
+
+.knob-solLabel{
     color:white;
+    font-size: 0.6em;
+    font-family: 'Ubuntu', sans-serif;
+    user-select: none;
 }
 
 .ignArmButton{
-    margin-top: 1.3em;
-    margin-left: 5.8em;
-    width: 6em;
-    height: 1.5em;
+    cursor: pointer;
+    margin-top: 8em;
+    margin-left: 0em;
+    width: 10em;
+    height: 1.8em;
     position:absolute;
-    border: .1em solid white;
     border-radius: 2em;
+    background-color: #cf8580;
+    border: .1em black solid;
+    position:absolute;
 }
 
-.ignArmLabel{
-    font-family: 'Ubuntu', sans-serif;
-    text-align: left;
-    margin-top: 2.6em;
-    size: 1em;
+.knob-ignArm{
+    width: 5em;
+    height: 1.7em;
+    position: absolute;
+    background: white;
+    border-radius: 2em;
+    border: .1em black solid;
+    background-color: #a30b00;
+
+    display: flex;
+    align-items: center; /* Vertical center alignment */
+    justify-content: center; /* Horizontal center alignment */
+
+}
+
+.knob-ignLabel{
     color:white;
+    font-size: 0.6em;
+    font-family: 'Ubuntu', sans-serif;
+    user-select: none;
 }
-
 
 .LC2Container{
     margin-left:26em;
@@ -575,9 +627,11 @@ html, body{
     font-size: 8px;
     line-height:23px;
     overflow:hidden;
+    user-select: none;
 }
 
 .ignitionButtonLabel{
+    user-select: none;
     font-family: 'Ubuntu', sans-serif;
     text-align: right;
     margin-top: 0.5em;
