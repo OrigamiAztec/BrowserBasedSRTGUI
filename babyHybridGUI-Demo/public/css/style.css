@@ -211,57 +211,6 @@ html, body{
     height: .95em;
 }
 
-/* All design related to bar below topNav and side navigation is here*/
-#hiddenOptions{
-    background-color: black;
-    flex: 0 1 1.5em;
-}
-
-
-
-.leftSideNavLabel {
-    cursor: pointer;
-    margin-left: 1.5em;
-    width: 3em;
-    height:1em;
-    float: left;
-}
-
-.leftSideNavLabel p{
-    font-family: 'Ubuntu', sans-serif;
-    margin-top: .4em;
-    font-size: .7em;
-    color:white;
-}
-
-/* The left side navigation menu */
-.sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 3em; /* Stay at the top */
-    left: 0;
-    background-color: #111; /* Black*/
-    overflow-x: scroll; /* Disable horizontal scroll */
-    padding-top: 1em; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-}
-
-/* The navigation menu links */
-.sidenav a {
-    padding: 0em 0em 1em 2em;
-    text-decoration: none;
-    font-size: .8em;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-    color: #f1f1f1;
-}
 
 /* The right side navigation menu */
 .sidenav2 {
@@ -269,7 +218,7 @@ html, body{
     width: 0em; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
-    top: 3em; /* Stay at the top */
+    top: 1.5em; /* Stay at the top */
     right: 0;
     background-color: #111; /* Black*/
     overflow-x: scroll; /* Disable horizontal scroll */
@@ -316,9 +265,122 @@ html, body{
 }
 
 .diagramContainer{
-    cursor: move;
     width: 400%;
     height: 150%;
+}
+
+.softwareArmingOptionsContainer{
+    margin-left: 5em;
+    margin-top: 12em;
+    width: 15em;
+    height: 15em;
+    position: absolute;
+}
+
+.sysArmButton{
+    margin-top: 0.2em;
+    margin-left: 5.8em;
+    width: 6em;
+    height: 1.5em;
+    position:absolute;
+    border: .1em solid white;
+    border-radius: 2em;
+}
+
+.sysArmLabel{
+    font-family: 'Ubuntu', sans-serif;
+    text-align: left;
+    margin-top: 0.5em;
+    size: 1em;
+    color:white;
+}
+
+.solArmButton{
+    margin-top: 1em;
+    margin-left: 5.8em;
+    width: 6em;
+    height: 1.5em;
+    position:absolute;
+    border: .1em solid white;
+    border-radius: 2em;
+}
+
+.solArmLabel{
+    font-family: 'Ubuntu', sans-serif;
+    text-align: left;
+    margin-top: 2.2em;
+    size: 1em;
+    color:white;
+}
+
+.ignArmButton{
+    margin-top: 1.3em;
+    margin-left: 5.8em;
+    width: 6em;
+    height: 1.5em;
+    position:absolute;
+    border: .1em solid white;
+    border-radius: 2em;
+}
+
+.ignArmLabel{
+    font-family: 'Ubuntu', sans-serif;
+    text-align: left;
+    margin-top: 2.6em;
+    size: 1em;
+    color:white;
+}
+
+
+.LC2Container{
+    margin-left:26em;
+    margin-top:5em;
+    width:8em;
+    height:4em;
+    position:absolute;
+    z-index:0;
+}
+
+
+.LC2Shape1{
+    margin-top: 0em;
+    margin-left: 0em;
+    width: 2.5em;
+    height: 1em;
+    position:absolute;
+    background-color: white;
+    border: .1em solid white;
+    z-index: 1;
+}
+
+.LC2Label{
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 1.5em;
+    margin-top: 0.3em;
+    font-size: 0.5em;
+    z-index: 0;
+}
+
+.LC2Label2{
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 4.5em;
+    margin-top: 0em;
+    font-size: .75em;
+    z-index: 0;
+    color: white;
+}
+
+.LC2Shape2{
+    margin-top: 0.5em;
+    margin-left: 0.65em;
+
+    width: 1.0em;
+    height: 1.0em;
+    position:absolute;
+    background-color: white;
+    border: .1em solid white;
+    border-radius: 50%;
+    z-index: 0;
 }
 
 .ventLogo2{
@@ -418,21 +480,34 @@ html, body{
     color:white;
 }
 
-.runTank_OT2 {
-    margin-top: 8.4em;
-    margin-left: 32.7em;
-    width: 3em;
-    height: 101px;
-    position: relative;
-    background: black;
-    border-radius: 7%;
-    overflow: hidden;
-    border: 2px solid white;
+.OT2container{
+    margin-left: 21.7em;
+    margin-top: 7.7em;
+    width: 20em;
+    height: 20em;
     position: absolute;
+    z-index:0;
+}
+
+.runTank_OT2 {
+    margin-left: 4em;
+    width: 3em;
+    height: 7em;
+    border: 2px solid white;
+    position:absolute;
+    border-radius: 7%;
+}
+
+.OT2Label1{
+    margin-top: 3em;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: .7em;
+    z-index: 0;
+    color: white;
 }
 
 .pipeUp3{
-    margin-left: 34.21em;
+    margin-left: 27.21em;
     margin-top: 14.9em;
     width: 0em;
     height: 7em;
@@ -441,7 +516,7 @@ html, body{
 }
 
 .pipeUp4{
-    margin-left: 34.21em;
+    margin-left: 27.21em;
     margin-top: 22.9em;
     width: 0m;
     height: 4em;
@@ -451,7 +526,7 @@ html, body{
 
 .chamber{
     margin-top: 26.4em;
-    margin-left: 32.7em;
+    margin-left: 25.7em;
     width: 3em;
     height: 101px;
     position: relative;
@@ -467,7 +542,7 @@ html, body{
 
 .ignitionButtonSection{
     
-    margin-left: 32em;
+    margin-left: 25em;
     margin-top: 21.9em;
     width: 7em;
     height: 4em;
@@ -587,11 +662,58 @@ html, body{
 }
 
 .pipeRight{
-    margin-left:34.3em;
+    margin-left:27.3em;
     margin-top: 19.1em;
-    width:11em;
+    width:18em;
     height: 0em;
     border-bottom: .2em solid white;
+    position: absolute;
+}
+
+.PTcontainer1{
+    margin-left: 33.9em;
+    margin-top: 10.9em;
+    width: 5.6em;
+    height: 5.6em;
+    position: absolute;
+    z-index:0;
+}
+
+.PTLogo{
+    margin-left: 0em;
+    margin-top: 0em;
+    width: 2.4em;
+    height: 2.4em;
+    border: .2em solid gray;
+    border-radius: 50%;
+
+    position: absolute;
+    z-index:0;
+}
+
+.PTlabel1{
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 0.4em;
+    margin-top: 0.7em;
+    size: .1em;
+    color:white;
+}
+
+.PTlabel2{
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 3.5em;
+    margin-top: 0.7em;
+    size: .1em;
+    color:white;
+}
+
+
+.pipeUp6{
+    margin-left: 35.22em;
+    margin-top: 13.7em;
+    width: 0em;
+    height: 5.5em;
+    border-right: .2em solid white;
     position: absolute;
 }
 
@@ -638,8 +760,8 @@ html, body{
 .valveInput2Label{
     font-family: 'Ubuntu', sans-serif;
     text-align: center;
-    margin-top:3em;
-    size: .2em;
+    margin-top: 4em;
+    font-size: 0.75em;
     color:white;
 }
 
@@ -743,33 +865,148 @@ html, body{
 
 .valveInput3Label{
     font-family: 'Ubuntu', sans-serif;
-    text-align: right;
+    margin-left: 4.5em;
     margin-top: .7em;
-    size: 1em;
+    font-size: .75em;
     color:white;
 }
 
 .pipeRight2{
     margin-left:47.3em;
     margin-top: 19.1em;
-    width:9em;
+    width: 10.6em;
     height: 0em;
     border-bottom: .2em solid white;
     position: absolute;
     box-shadow: 0 0 2px 2px white;
 }
 
-.supplyTank_OT1 {
-    margin-top: 16.1em;
-    margin-left: 56em;
-    width: 3em;
-    height: 101px;
-    position: relative;
-    background: black;
-    border-radius: 7%;
-    overflow: hidden;
-    border: 2px solid white;
+.pipeUp5{
+    margin-left: 52.22em;
+    margin-top: 13.7em;
+    width: 0em;
+    height: 5.2em;
+    border-right: .2em solid white;
     position: absolute;
+    box-shadow: 0 0 2px 2px white;
+}
+
+.PTcontainer2{
+    margin-left: 50.9em;
+    margin-top: 10.9em;
+    width: 5.6em;
+    height: 5.6em;
+    position: absolute;
+    z-index:0;
+}
+
+.PT2Logo{
+    margin-left: 0em;
+    margin-top: 0em;
+    width: 2.4em;
+    height: 2.4em;
+    border: .2em solid gray;
+    border-radius: 50%;
+
+    position: absolute;
+    z-index:0;
+}
+
+.PT2label1{
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 0.4em;
+    margin-top: 0.7em;
+    size: .1em;
+    color:white;
+}
+
+.PT2label2{
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 3.5em;
+    margin-top: 0.7em;
+    size: .1em;
+    color:white;
+}
+
+.OT1container{
+    margin-left: 58em;
+    margin-top: 14.5em;
+    width: 10em;
+    height: 10em;
+    position: absolute;
+    z-index:0;
+}
+
+.supplyTank_OT1 {
+    margin-left: 0em;
+    width: 3em;
+    height: 8.5em;
+    border: 2px solid white;
+    position:absolute;
+    border-radius: 7%;
+}
+
+.OT1Label1{
+    margin-left: 5.8em;
+    margin-top: 3.8em;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: .7em;
+    z-index: 0;
+    color: white;
+}
+
+
+
+
+.LC1Container{
+    margin-left: 58.2em;
+    margin-top: 25em;
+    width:8em;
+    height:4em;
+    position:absolute;
+    z-index:0;
+}
+
+
+.LC1Shape1{
+    margin-top: 0em;
+    margin-left: 0em;
+    width: 2.5em;
+    height: 1em;
+    position:absolute;
+    background-color: white;
+    border: .1em solid white;
+    z-index: 1;
+}
+
+.LC1Label{
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 1.8em;
+    margin-top: 0.3em;
+    font-size: 0.5em;
+    z-index: 0;
+}
+
+.LC1Label2{
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 4.5em;
+    margin-top: 0em;
+    font-size: .75em;
+    z-index: 0;
+    color: white;
+}
+
+.LC1Shape2{
+    margin-top: -0.5em;
+    margin-left: 0.8em;
+
+    width: 1.0em;
+    height: 1.0em;
+    position:absolute;
+    background-color: white;
+    border: .1em solid white;
+    border-radius: 50%;
+    z-index: 0;
 }
 
 
@@ -807,4 +1044,40 @@ html, body{
     height:100%;
     width: 20%;
     border-right: 2px solid #363636;
+}
+
+.startRecordingDataLogo{
+    cursor: pointer;
+    height:100%;
+    float:left;
+}
+
+.startRecordingDataLogo img{
+    margin-left: .3em;
+    margin-top:.4em;
+    height: .95em;
+}
+
+.saveDataLogo{
+    cursor:pointer;
+    height:100%;
+    float:left;
+}
+
+.saveDataLogo img{
+    margin-left: .3em;
+    margin-top:.4em;
+    height: .95em;
+}
+
+.data_recording_status{
+    margin-left: .3em;
+    float:left;
+    height:100%;
+    width: 20%;
+    border-right: 2px solid #363636;
+}
+
+.data_recording_status p{
+    margin-left: 6em;
 }

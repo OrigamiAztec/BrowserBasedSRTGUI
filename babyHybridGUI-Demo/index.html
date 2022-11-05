@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>TAMU SRT Chrome GUI 1.0</title>
+    <!--Link source to css styling page-->
+    <!--Link source to css styling page. Remove "public" when setting file path with socket io.-->
+    <link rel="stylesheet" type="text/css"  href="public/css/style.css">
+
+     
+    <!-- links to nice google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    
+    <!-- links to a nice plotting package -->
+    <script src="https://cdn.plot.ly/plotly-2.11.1.min.js"></script>
+    
+</head>
+
+<body>
+  <div id = "bodyContainer">
+    <div id = "topNav">
+        <div class = "logoContainer">
+            <img class="team_logo" src="https://pbs.twimg.com/profile_images/1114624340912480256/TcLYCU4l_400x400.png" alt="My_Logo">
+        </div>
+
+        <div class = "trapezoidDivider1">
+        </div>
+        <div class = "trapezoidDivider2">
+        </div>
+
+        <div class = "teamName">
+            <p>TAMU SRT GUI 2.0</p>
+        </div>
+
+        <div class = "trapezoidDivider3"></div>
+
+        <!-- <div class="rightSideNavLabel"><div class = "plotLogo" onclick="openCloseRightNavBar()"> <img src="/images/plotLogo.png"> </div></div> -->
+        <div class="rightSideNavLabel"><div class = "plotLogo" onclick="openCloseRightNavBar()"> <img src="public/images/plotLogo.png"> </div></div> 
+
+        
+
+        <!-- <div class="consoleWindowLabel"><div class = "consoleLogo"> <img src="images/consoleLogo.png"> </div></div> -->
+        <div class="consoleWindowLabel"><div class = "consoleLogo"> <img src="public/images/consoleLogo.png"> </div></div> 
+        
+        <div class = "dateTopNav">
+            <p class = "updatedDate"></p>
+        </div>
+
+        <div class = "timeTopNav">
+            <p class  = "updatedTime"></p>
+        </div>
+
+        <div class="portSelectionDiv">
+            <div class="dropbtn">
+              <p>Port Conn</p>
+            </div>
+            <div class="portSelectionDiv-content">
+            </div>
+        </div>
+
+        <div class = "trapezoidDivider4"></div>
+
+    </div>     
+
+    <div id="rightSideNav" class="sidenav2">
+        <div class = 'plotArea'>
+            <div id='plotDiv1'><!-- Plotly chart will be drawn inside this DIV --></div>
+        </div>
+    </div>
+
+    <div id = "mainDisplay">
+
+        <div class="diagramContainer">
+
+            <div class = "softwareArmingOptionsContainer">
+                <div class = "sysArmButton">
+                    <div class = "knob-sysArm"></div>
+                </div>
+                <p class = "sysArmLabel">SYS ARM</p>
+                <div class = "solArmButton"></div>
+                <p class = "solArmLabel">SOL ARM</p>
+                <div class = "ignArmButton"></div>
+                <p class = "ignArmLabel">IGN ARM</p>
+            </div>
+
+            <div class = "LC2Container">
+                <div class="LC2Shape1">
+                    <div class = "LC2Label">LC2</div>
+                </div>
+                <div class="LC2Shape2"></div>
+                <p class ="LC2Label2">--- <br>lbf</p>
+
+            </div>
+
+            <div class = "OT2container">
+                <div class = "runTank_OT2"></div>
+                <div class ="OT2Label1">OT2 <br>Run Tank</div>
+            </div>
+
+            <div class = "pipeUp3"></div>
+
+            <div class = "pipeUp4"></div>
+
+            <div class = "chamber"></div>
+
+            <div class =  "ignitionButtonSection">
+
+                <div class="ignitionButton" onclick = "switchIgnitionButton()">
+
+                    <div class="knob">OFF</div>
+                    
+                  </div>
+
+                <p class = "ignitionButtonLabel">IGN</p>
+            </div>
+        
+
+            <div class = "pipeRight"></div>
+
+            <div class = "pipeUp6"></div>
+
+            <div class = "PTcontainer1">
+                <div class = "PTLogo">
+                    <p class ="PTlabel1">PT1</p>
+                </div>
+                <p class ="PTlabel2">--- <br>PSI</p>
+            </div>
+
+            <div class =  "supplyTankFillsol1" onclick = "rotateValveLine2()">
+                <div class = "automationIndicator2"></div>
+                <div class = "responseIndicator2"></div>
+                <div class = "valvePosInput2"></div>
+                <p class = "valveInput2Label">OV1 <br>Fill</p>
+            </div>
+
+            <div class =  "supplyTankVentsol2" onclick = "rotateValveLine3()">
+                <div class = "automationIndicator3"></div>
+                <div class = "responseIndicator3"></div>
+                <div class = "valvePosInput3"></div>
+                <p class = "valveInput3Label">OV2 <br>Vent</p>
+            </div>
+
+            <div class =  "pipeUp1"></div>
+            <div class =  "pipeUp2"></div>
+            <div class = "pipeRight2"></div>
+
+            <div class="ventLogo">
+                <div class = "line1">
+                </div>
+                <div class = "line2">
+                </div>
+                <div class = "line3">
+                </div>
+            </div>
+
+            <div class = "pipeUp5"></div>
+
+            <div class = "PTcontainer2">
+                <div class = "PT2Logo">
+
+                    <p class ="PT2label1">PT2</p>
+
+                </div>
+                    
+                    <p class ="PT2label2">--- <br>PSI</p>
+            </div>
+
+
+            <div class = "OT1container">
+                <div class = "supplyTank_OT1"></div>
+                <div class ="OT1Label1">OT1 <br>Supply Tank</div>
+            </div>
+
+            <div class = "LC1Container">
+                <div class="LC1Shape1">
+                    <div class = "LC1Label">LC1</div>
+                </div>
+                <div class="LC1Shape2"></div>
+                <p class ="LC1Label2">--- <br>lbf</p>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div id = "footer">
+        <div class = "last_sent">
+            <p>Last Sent  </p>
+        </div>
+
+        <div class = "last_received">
+            <p>Last Received   </p>
+        </div>
+
+        <div class = "warning_status">
+            <p>Warning Status </p>
+        </div>
+
+        <div class = "data_recording_status">
+            <div class = "startRecordingDataLogo" onclick = "updateDataRecordingState()"><img src="public/images/playButtonLogo.PNG" id="imgClickAndChange">></div> 
+            <div class = "saveDataLogo" onclick = "download_csv_file()"><img src="public/images/saveDataLogo.png"></div> 
+            <p id="recordingTextStatus">Not Recording</p>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+  <script src="public/javascript/animationResponse.js"></script>
+
+</body>
+
+</html>
