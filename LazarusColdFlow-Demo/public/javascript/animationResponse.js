@@ -1,6 +1,8 @@
 var clickCounter = 0;
 var closeRightNavCounter = 0;
 
+var abortStatus = 0;
+
 var valveInput4 = 0;
 var valveInput3 = 0;
 var valveInput2 = 0;
@@ -77,6 +79,75 @@ function openCloseRightNavBar(){
         closeRightNavCounter = 0;
         document.getElementById("rightSideNav").style.width = "0";
     }    
+}
+
+function abortSystem(){
+    if (abortStatus == 0){
+        // abort means open all solenoids then disarm system by software.
+        abortStatus ++;
+        console.log("abort system");
+        document.querySelector('.abortLogo').style["background-color"] = "#6ade6c";
+        //console.log(globalTime)
+        
+        document.querySelector('.last_sent_text').textContent = "Last Sent: ABORT";
+
+        //update system arming button
+        document.querySelector('.knob-sysArm').style.transform = 'translate(0px)';
+        document.querySelector('.knob-sysArm').style["background-color"] = '#a30b00';
+        document.querySelector('.knob-sysLabel').textContent = "SYS DISARMED";  
+        document.querySelector('.knob-sysLabel').style["color"] = "white";  
+        document.querySelector('.sysArmButton').style["background-color"] = "#cf8580";
+
+        //update solenoid arming button
+        document.querySelector('.knob-solArm').style.transform = 'translate(0px)';
+        document.querySelector('.knob-solArm').style["background-color"] = '#a30b00';
+        document.querySelector('.knob-solLabel').textContent = "SOL DISARMED";  
+        document.querySelector('.knob-solLabel').style["color"] = "white";  
+        document.querySelector('.solArmButton').style["background-color"] = "#cf8580";
+
+        //updating OV3 open logo
+        document.querySelector('.valvePosInput4').style.transform = 'rotate(0deg)';
+        document.querySelector('.pipeRight4').style["boxShadow"] = " 0 0 2px 2px white";
+
+        //updating OV2 open logo
+        document.querySelector('.valvePosInput3').style.transform = 'rotate(90deg)';
+        document.querySelector('.pipeUp2').style["boxShadow"] = " 0 2px 2px 2px white";
+
+        //updating OV1 open logo
+        document.querySelector('.valvePosInput2').style.transform = 'rotate(0deg)';
+        document.querySelector('.pipeRight').style["boxShadow"] = " 0 0 2px 2px white";
+        document.querySelector('.pipeRight3').style["boxShadow"] = " 0 0 2px 2px white";
+
+        document.querySelector('.pipeUp1').style["boxShadow"] = " 0 2px 2px 2px white";
+        document.querySelector('.pipeUp3').style["boxShadow"] = " 0 2px 2px 2px white";
+        document.querySelector('.pipeUp6').style["boxShadow"] = " 0 2px 2px 2px white";
+        document.querySelector('.pipeUp7').style["boxShadow"] = " 0 2px 2px 2px white";
+
+        if (DataRecordingStatus){
+            csvSimulatedFileData.push([globalDate, globalTime, "SYS ABORT"]);
+        }  
+
+        //Commands:
+        //a - abort which will turn off igniter relays, arm solenoids to open, open all solenoids, beep buzzer, then disarm everything.
+        socket.emit('inputString', "a");
+        sysArmStatus = 0;
+        solArmStatus = 0;
+        ignArmStatus = 0;
+    }
+    else{
+        
+        // un-aborting effectively does nothing. just resets button so you can try to abort again.
+        abortStatus = 0;
+
+        console.log("un-abort system");
+
+        document.querySelector('.abortLogo').style["background-color"] = "#a30b00";
+        document.querySelector('.last_sent_text').textContent = "Last Sent: UNABORT";
+
+        if (DataRecordingStatus){
+            csvSimulatedFileData.push([globalDate, globalTime, "SYS UNABORT"]);
+        }
+    }
 }
 
 function armDisarmSystem(){
@@ -176,9 +247,9 @@ function rotateValveLine4(){
         document.querySelector('.last_sent_text').textContent = " Last Sent: OV3+";
         document.querySelector('.valvePosInput4').style.transform = 'rotate(0deg)';
         document.querySelector('.pipeRight4').style["boxShadow"] = " 0 0 2px 2px white";
-        //if (DataRecordingStatus){
-        //    csvSimulatedFileData.push([globalDate, globalTime, "OV2 OPEN"]);
-        //}  
+        if (DataRecordingStatus){
+            csvSimulatedFileData.push([globalDate, globalTime, "OV3 OPEN"]);
+        }  
     }else{
         valveInput4 = 0;
         console.log("OV-3 close");
@@ -187,9 +258,9 @@ function rotateValveLine4(){
         document.querySelector('.valvePosInput4').style.transform = 'rotate(45deg)';
         document.querySelector('.pipeRight4').style["boxShadow"] = " 0 0 0 0 white";
         
-        //if (DataRecordingStatus){
-        //    csvSimulatedFileData.push([globalDate, globalTime, "OV2 CLOSE"]);
-        //}  
+        if (DataRecordingStatus){
+            csvSimulatedFileData.push([globalDate, globalTime, "OV3 CLOSE"]);
+        }  
     }
 
     //document.querySelector('.responseIndicator3').style["boxShadow"] = "0 0 10px 5px red";

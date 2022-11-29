@@ -269,6 +269,31 @@ html, body{
     height: 150%;
 }
 
+.abortContainer{
+    margin-left: 8.2em;
+    margin-top: 8em;
+    width: 5em;
+    height: 5em;
+    position: absolute;
+}
+
+.abortLogo{
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    background-color:#a30b00;
+    border: 1px solid black;
+}
+
+.abortLogoLabel{
+    margin-top: 1.4em;
+    margin-left: .4em;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: .7em;
+    color:white;
+    user-select: none;
+}
+
 .softwareArmingOptionsContainer{
     margin-left: 5em;
     margin-top: 12em;

@@ -81,6 +81,12 @@
 
         <div class="diagramContainer">
 
+            <div class = "abortContainer" onclick = "abortSystem()">
+                <div class = "abortLogo">
+                    <p class ="abortLogoLabel">ABORT</p>
+                </div>
+            </div>
+            
             <div class = "softwareArmingOptionsContainer">
                 <div class = "sysArmButton" onclick = "armDisarmSystem()">
                     <div class = "knob-sysArm">
@@ -140,9 +146,9 @@
 
             <div class = "PTcontainer1">
                 <div class = "PTLogo">
-                    <p class ="PTlabel1">PT1</p>
+                    <p class ="PTlabel1">PT2</p>
                 </div>
-                <p class ="PTlabel2">--- <br>PSI</p>
+
             </div>
 
             <div class =  "supplyTankFillsol1" onclick = "rotateValveLine2()">
@@ -177,11 +183,10 @@
             <div class = "PTcontainer2">
                 <div class = "PT2Logo">
 
-                    <p class ="PT2label1">PT2</p>
+                    <p class ="PT2label1">PT1</p>
 
                 </div>
                     
-                    <p class ="PT2label2">--- <br>PSI</p>
             </div>
 
 
@@ -220,7 +225,13 @@
             <div class = "saveDataLogo" onclick = "download_csv_file()"><img src="public/images/saveDataLogo.png"></div> -->
             <div class = "startRecordingDataLogo" onclick = "updateDataRecordingState()"><img src="/images/playButtonLogo.PNG" id="imgClickAndChange">></div>
             <div class = "saveDataLogo" onclick = "download_csv_file()"><img src="images/saveDataLogo.png"></div> 
-            <p id="recordingTextStatus">Not Recording</p>
+            <p id="recordingTextStatus">Not Recording Button Inputs</p>
+        </div>
+
+        <div class = "load_cell_data_recording_status">
+            <div class = "startRecordingLoadCellDataLogo" onclick = "updateLoadCellDataRecordingState()"><img src="/images/playButtonLogo.PNG" id="imgClickAndChange2">></div>
+            <div class = "saveLoadCellDataLogo" onclick = "download_load_cell_csv_file()"><img src="images/saveDataLogo.png"></div> 
+            <p id="recordingLoadCellDataTextStatus">Not Recording Load Cell Data</p>
         </div>
 
     </div>

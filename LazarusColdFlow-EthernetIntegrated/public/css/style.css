@@ -269,6 +269,31 @@ html, body{
     height: 150%;
 }
 
+.abortContainer{
+    margin-left: 8.2em;
+    margin-top: 8em;
+    width: 5em;
+    height: 5em;
+    position: absolute;
+}
+
+.abortLogo{
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    background-color:#a30b00;
+    border: 1px solid black;
+}
+
+.abortLogoLabel{
+    margin-top: 1.4em;
+    margin-left: .4em;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: .7em;
+    color:white;
+    user-select: none;
+}
+
 .softwareArmingOptionsContainer{
     margin-left: 5em;
     margin-top: 12em;
@@ -769,7 +794,7 @@ html, body{
     cursor: pointer;
     margin-left: 56.9em;
     margin-top: 18em;
-    width: 2.4em;
+    width: 4.5em;
     height: 4em;
     position: absolute;
     z-index:0;
@@ -807,7 +832,7 @@ html, body{
 
 .valveInput2Label{
     font-family: 'Ubuntu', sans-serif;
-    text-align: center;
+    text-align: left;
     margin-top: 4em;
     font-size: 0.75em;
     color:white;

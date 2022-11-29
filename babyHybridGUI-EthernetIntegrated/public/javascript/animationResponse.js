@@ -6,6 +6,8 @@ var valveInput3 = 0;
 var valveInput2 = 0;
 var ignitionInput = 0;
 
+var abortStatus = 0;
+
 var sysArmStatus = 0;
 var solArmStatus = 0;
 var ignArmStatus = 0;
@@ -14,6 +16,7 @@ var runTankWeight;
 var supplyTankWeight;
 
 var DataRecordingStatus = 0;
+var loadCellDataRecordingStatus = 0;
 
 var globalTime;
 var globalDate;
@@ -57,13 +60,30 @@ socket.on('data2', function(data) {
         }
 });
 
-socket.on('padWeightdata', function(data){
+/*socket.on('padWeightdata', function(data){
     //runTankWeight = DataRecordingStatus
     runTankWeight = parseFloat(data.split(",")[0]);
     supplyTankWeight = parseFloat(data.split(",")[1]);
     //console.log(runTankWeight, supplyTankWeight);
     document.querySelector(".LC2Label2").textContent = runTankWeight + " lbf";
+});*/
+var initTimeInMilliSeconds = +new Date();
+
+socket.on('padWeightSerialData', function(data){
+    var currentTimeInMilliSeconds = +new Date();
+    var timeElapsed = currentTimeInMilliSeconds - initTimeInMilliSeconds;
+    runTankWeight = parseFloat(data.split(",")[0]);
+    supplyTankWeight = parseFloat(data.split(",")[1]);
+    console.log(timeElapsed, runTankWeight, supplyTankWeight);
+    document.querySelector(".LC2Label2").textContent = runTankWeight + " lbf";
+    document.querySelector(".LC1Label2").textContent = supplyTankWeight + " lbf";
+
+    if (DataRecordingStatus){
+        loadCellCSVFileData.push([timeElapsed, runTankWeight, supplyTankWeight]);
+    }  
+
 });
+
 
 //top navigation bar functions:
 function openCloseRightNavBar(){
@@ -76,6 +96,44 @@ function openCloseRightNavBar(){
         closeRightNavCounter = 0;
         document.getElementById("rightSideNav").style.width = "0";
     }    
+}
+
+function abortSystem(){
+    if (abortStatus == 0){
+        // abort means open all solenoids then disarm system by software.
+        abortStatus ++;
+        console.log("abort system");
+        document.querySelector('.abortLogo').style["background-color"] = "#6ade6c";
+        //console.log(globalTime)
+        
+        document.querySelector('.last_sent_text').textContent = "Last Sent: ABORT";
+
+
+        if (DataRecordingStatus){
+            csvSimulatedFileData.push([globalDate, globalTime, "SYS ABORT"]);
+        }  
+
+        //Commands:
+        //a - abort which will turn off igniter relays, arm solenoids to open, open all solenoids, beep buzzer, then disarm everything.
+        socket.emit('inputString', "a");
+        sysArmStatus = 0;
+        solArmStatus = 0;
+        ignArmStatus = 0;
+    }
+    else{
+        
+        // un-aborting effectively does nothing. just resets button so you can try to abort again.
+        abortStatus = 0;
+
+        console.log("un-abort system");
+
+        document.querySelector('.abortLogo').style["background-color"] = "#a30b00";
+        document.querySelector('.last_sent_text').textContent = "Last Sent: UNABORT";
+
+        if (DataRecordingStatus){
+            csvSimulatedFileData.push([globalDate, globalTime, "SYS UNABORT"]);
+        }
+    }
 }
 
 function armDisarmSystem(){
@@ -463,6 +521,21 @@ function updateDataRecordingState(){
     }
 }
 
+function updateLoadCellDataRecordingState(){
+    if (loadCellDataRecordingStatus == 0){
+        loadCellDataRecordingStatus ++;
+        console.log("recording load cell data");
+        document.getElementById('imgClickAndChange2').src = '/images/playButtonLogoRed.PNG';
+        document.getElementById('recordingLoadCellDataTextStatus').textContent = "Recording Load Cell Data";
+    }
+    else{
+        loadCellDataRecordingStatus = 0;
+        console.log("not recording data");
+        document.getElementById('imgClickAndChange2').src = '/images/playButtonLogo.PNG';
+        document.getElementById('recordingLoadCellDataTextStatus').textContent = "Not Recording Load Cell Data";
+    }
+}
+
 //create CSV file data in an array  
 var csvSimulatedFileData = [  
     //['10/24/2022', '1:49:13', "SupplyFillClose"],  
@@ -471,6 +544,10 @@ var csvSimulatedFileData = [
     //['10/24/2022', '1:49:14', "SupplyFillOpen"],  
     //['10/24/2022', '1:49:15', "IgnitionOn"]  
  ];  
+ 
+ var loadCellCSVFileData = [
+
+ ]
 
 //save CSV file from commands saved during save session
 function download_csv_file(){
@@ -498,4 +575,26 @@ function download_csv_file(){
     
 }
 
+function download_load_cell_csv_file(){
+    //define the heading for each row of the data  
+    var csv = 'Time elapsed (ms), Run Tank Weight (lbf), Supply Tank Weight (lbf)\n';  
+       
+    //merge the data with CSV  
+    loadCellCSVFileData.forEach(function(row) {  
+            csv += row.join(',');  
+            csv += "\n";  
+    });  
+   
+    var csvFile;
+    var downloadLink;
+   
+    //define the file type to text/csv
+    csvFile = new Blob([csv], {type: 'text/csv'});
+    downloadLink = document.createElement("a");
+    downloadLink.download = "loadCellData.csv";
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+    downloadLink.style.display = "none";
 
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+}
